@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>636102929477-596thqnan64kf28h73ptai06rl3ml38a.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.636102929477-596thqnan64kf28h73ptai06rl3ml38a</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB__hlFb0YOFNAmA_YYb_AjJrUCzh7qnU8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>636102929477</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>co.fahmiiireza123.Flash-Chat-iOS13</string>
+	<key>PROJECT_ID</key>
+	<string>cheesy-chat</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cheesy-chat.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:636102929477:ios:eaf340f7650562b62bc72c</string>
+</dict>
+</plist>
