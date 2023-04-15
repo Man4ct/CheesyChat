@@ -65,7 +65,7 @@ playground.xcworkspace
 # Pods/
 # Add this line if you want to avoid checking in source code from the Xcode workspace
 # *.xcworkspace
-.Flash Chat iOS13/GoogleService-Info.plist
+*.GoogleService-Info.plist
 # Carthage
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
