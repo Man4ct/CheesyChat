@@ -7,14 +7,35 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseAuth
+
 
 class LoginViewController: UIViewController {
-
+    var errMsg = ""
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
 
     @IBAction func loginPressed(_ sender: UIButton) {
+        if let email = emailTextfield.text, let password = passwordTextfield.text {
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let err = error {
+                    self.errMsg = err.localizedDescription
+                    self.performSegue(withIdentifier: "LoginToError", sender: self)
+
+                } else {
+                    self.performSegue(withIdentifier: K.loginSegue, sender: self)
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LoginToError" {
+            let destinationVC = segue.destination as! ErrorViewController
+            destinationVC.errorMessage = errMsg
+        }
     }
     
 }
