@@ -8,17 +8,16 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class ChatViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
     
-    var messages: [Message] = [
-    Message(sender: "Cisi", body: "Anjay"),
-    Message(sender: "Fahmi", body: "Binjai"),
-    Message(sender: "Cisi", body: "Anjay"),
-    ]
+    let db = Firestore.firestore()
+    
+    var messages : [Message] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +26,43 @@ class ChatViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+        loadMessages()
+    }
+    
+    func loadMessages() {
+        messages = []
+        db.collection(K.FStore.collectionName).addSnapshotListener { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    if let sender = data[K.FStore.senderField] as? String, let messageBody = data[K.FStore.bodyField] as? String {
+                        let newMessage = Message(sender: sender, body: messageBody)
+                        self.messages.append(newMessage)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                    
+                }
+            }
+        }
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
+        if let messageBody = messageTextfield.text, let messageSender = Auth.auth().currentUser?.email {
+            db.collection(K.FStore.collectionName).addDocument(data: [
+                K.FStore.senderField : messageSender,
+                K.FStore.bodyField : messageBody,
+            ]) { (err) in
+                if let e = err {
+                    print(e)
+                } else {
+                    self.messageTextfield.text = ""
+                }
+            }
+        }
     }
     
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
