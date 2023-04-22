@@ -8,5 +8,7 @@ target 'Flash Chat iOS13' do
   pod 'CLTypingLabel', '~> 0.4.0'
   pod 'FirebaseAuth', '~> 10.8.0'
   pod 'FirebaseFirestore'
+  pod 'IQKeyboardManager' #iOS8 and later
+
 
 end
