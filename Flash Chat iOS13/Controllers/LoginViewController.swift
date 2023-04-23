@@ -1,9 +1,6 @@
 //
 //  LoginViewController.swift
-//  Flash Chat iOS13
-//
-//  Created by Angela Yu on 21/10/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
+//  Cheesy Chat
 //
 
 import UIKit
@@ -12,7 +9,6 @@ import FirebaseAuth
 
 
 class LoginViewController: UIViewController {
-    var errMsg = ""
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
@@ -21,21 +17,11 @@ class LoginViewController: UIViewController {
         if let email = emailTextfield.text, let password = passwordTextfield.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if let err = error {
-                    self.errMsg = err.localizedDescription
-                    self.performSegue(withIdentifier: "LoginToError", sender: self)
-
+                    print(err.localizedDescription)
                 } else {
                     self.performSegue(withIdentifier: K.loginSegue, sender: self)
                 }
             }
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LoginToError" {
-            let destinationVC = segue.destination as! ErrorViewController
-            destinationVC.errorMessage = errMsg
-        }
-    }
-    
 }

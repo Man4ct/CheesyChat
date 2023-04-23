@@ -1,9 +1,6 @@
 //
 //  ChatViewController.swift
-//  Flash Chat iOS13
-//
-//  Created by Angela Yu on 21/10/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
+//  Cheesy Chat iOS13
 //
 
 import UIKit
@@ -92,7 +89,8 @@ extension ChatViewController: UITableViewDataSource {
         if message.sender == Auth.auth().currentUser?.email {
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
-//            cell.messageBuble.backgroundColor = UIColor(named: )
+            cell.messageBuble.backgroundColor = UIColor(named: "BrandLightBlue")
+            cell.label.textColor = UIColor.white
         } else {
             cell.leftImageView.isHidden = false
             cell.rightImageView.isHidden = true
