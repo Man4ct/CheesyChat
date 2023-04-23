@@ -10,7 +10,7 @@ import UIKit
 
 class MessageCell: UITableViewCell {
 
-    
+    @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var label: UILabel! 
     @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var messageBuble: UIView!
