@@ -94,6 +94,15 @@ extension ChatViewController: UITableViewDataSource {
         } else {
             cell.leftImageView.isHidden = false
             cell.rightImageView.isHidden = true
+            cell.messageBuble.backgroundColor = UIColor(named: "BrandLightPurple")
+            cell.label.textColor = UIColor.black
+        }
+        if message.sender == "1@2.com" {
+            cell.leftImageView.image = UIImage(named: "MeAvatar")
+            cell.rightImageView.image = UIImage(named: "MeAvatar")
+        } else {
+            cell.leftImageView.image = UIImage(named: "YouAvatar")
+            cell.rightImageView.image = UIImage(named: "YouAvatar")
         }
         return cell
     }
