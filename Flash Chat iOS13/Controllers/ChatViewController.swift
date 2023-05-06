@@ -89,15 +89,15 @@ extension ChatViewController: UITableViewDataSource {
         if message.sender == Auth.auth().currentUser?.email {
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
-            cell.messageBuble.backgroundColor = UIColor(named: "BrandLightBlue")
-            cell.label.textColor = UIColor.white
+            cell.messageBuble.backgroundColor = UIColor(named: "fadeYellow")
+            cell.label.textColor = UIColor.black
         } else {
             cell.leftImageView.isHidden = false
             cell.rightImageView.isHidden = true
             cell.messageBuble.backgroundColor = UIColor(named: "BrandLightPurple")
             cell.label.textColor = UIColor.black
         }
-        if message.sender == "1@2.com" {
+        if message.sender == "man@gmail.com" {
             cell.leftImageView.image = UIImage(named: "MeAvatar")
             cell.rightImageView.image = UIImage(named: "MeAvatar")
         } else {
